@@ -1,0 +1,585 @@
+
+
+SunOS 5.8 System Calls
+
+     access(2)
+           determine accessibility of a file
+
+     acct(2)
+           enable or disable process accounting
+
+     acl(2)
+           get or set a file's Access Control List (ACL)
+
+     adjtime(2)
+           correct the time to allow synchronization of the  sys-
+           tem clock
+
+     alarm(2)
+           set a process alarm clock
+
+     audit(2)
+           write a record to the audit log
+
+     auditon(2)
+           manipulate auditing
+
+     auditsvc(2)
+           write audit log to specified file descriptor
+
+     brk(2)
+           change the amount of space allocated for  the  calling
+           process's data segment
+
+     chdir(2)
+           change working directory
+
+     chmod(2)
+           change access permission mode of file
+
+     chown(2)
+           change owner and group of a file
+
+     chroot(2)
+           change root directory
+
+     close(2)
+           close a file descriptor
+
+     creat(2)
+           create a new file or rewrite an existing one
+
+     dup(2)
+           duplicate an open file descriptor
+
+     exec(2)
+           execute a file
+
+     execl(2)
+           See exec(2)
+
+     execle(2)
+           See exec(2)
+
+     execlp(2)
+           See exec(2)
+
+     execv(2)
+           See exec(2)
+
+     execve(2)
+           See exec(2)
+
+     execvp(2)
+           See exec(2)
+
+     exit(2)
+           terminate process
+
+     facl(2)
+           See acl(2)
+
+     fchdir(2)
+           See chdir(2)
+
+     fchmod(2)
+           See chmod(2)
+
+     fchown(2)
+           See chown(2)
+
+     fchroot(2)
+           See chroot(2)
+
+     fcntl(2)
+           file control
+
+     fork(2)
+           create a new process
+
+     fork1(2)
+           See fork(2)
+
+     fpathconf(2)
+           get configurable pathname variables
+
+     fstat(2)
+           See stat(2)
+
+     fstatvfs(2)
+           See statvfs(2)
+
+     getaudit(2)
+           get and set process audit information
+
+     getaudit_addr(2)
+           See getaudit(2)
+
+     getauid(2)
+           get and set user audit identity
+
+     getcontext(2)
+           get and set current user context
+
+     getdents(2)
+           read directory  entries  and  put  in  a  file  system
+           independent format
+
+     getegid(2)
+           See getuid(2)
+
+     geteuid(2)
+           See getuid(2)
+
+     getgid(2)
+           See getuid(2)
+
+     getgroups(2)
+           get or set supplementary group access list IDs
+
+     getitimer(2)
+           get or set value of interval timer
+
+     getmsg(2)
+           get next message off a stream
+
+     getpgid(2)
+           See getpid(2)
+
+     getpgrp(2)
+           See getpid(2)
+
+     getpid(2)
+           get process, process group, and parent process IDs
+
+     getpmsg(2)
+           See getmsg(2)
+
+     getppid(2)
+           See getpid(2)
+
+     getrlimit(2)
+           control maximum system resource consumption
+
+     getsid(2)
+           get process group ID of session leader
+
+     getuid(2)
+           get real user, effective user, real group, and  effec-
+           tive group IDs
+
+     intro(2)
+           See Intro(2)
+
+     ioctl(2)
+           control device
+
+     kill(2)
+           send a signal to a process or a group of processes
+
+     lchown(2)
+           See chown(2)
+
+     link(2)
+           link to a file
+
+     llseek(2)
+           move extended read/write file pointer
+
+     lseek(2)
+           move read/write file pointer
+
+     lstat(2)
+           See stat(2)
+
+     memcntl(2)
+           memory management control
+
+     mincore(2)
+           determine residency of memory pages
+
+     mkdir(2)
+           make a directory
+
+     mknod(2)
+           make a directory, or a special or ordinary file
+
+     mmap(2)
+           map pages of memory
+
+     mount(2)
+           mount a file system
+
+     mprotect(2)
+           set protection of memory mapping
+
+     msgctl(2)
+           message control operations
+
+     msgget(2)
+           get message queue
+
+     msgrcv(2)
+           message receive operation
+
+     msgsnd(2)
+           message send operation
+
+     munmap(2)
+           unmap pages of memory
+
+     nice(2)
+           change priority of a process
+
+     ntp_adjtime(2)
+           adjust local clock parameters
+
+     ntp_gettime(2)
+           get local clock values
+
+     open(2)
+           open a file
+
+     p_online(2)
+           return or change processor operational status
+
+     pathconf(2)
+           See fpathconf(2)
+
+     pause(2)
+           suspend process until signal
+
+     pcsample(2)
+           program execution time profile
+
+     pipe(2)
+           create an interprocess channel
+
+     poll(2)
+           input/output multiplexing
+
+     pread(2)
+           See read(2)
+
+     priocntl(2)
+           process scheduler control
+
+     priocntlset(2)
+           generalized process scheduler control
+
+     processor_bind(2)
+           bind LWPs to a processor
+
+     processor_info(2)
+           determine type and status of a processor
+
+     profil(2)
+           execution time profile
+
+     pset_assign(2)
+           See pset_create(2)
+
+     pset_bind(2)
+           bind LWPs to a set of processors
+
+     pset_create(2)
+           manage sets of processors
+
+     pset_destroy(2)
+           See pset_create(2)
+
+     pset_info(2)
+           get information about a processor set
+
+     ptrace(2)
+           allows a parent process to control the execution of  a
+           child process
+
+     putmsg(2)
+           send a message on a stream
+
+     putpmsg(2)
+           See putmsg(2)
+
+     pwrite(2)
+           See write(2)
+
+     read(2)
+           read from file
+
+     readlink(2)
+           read the contents of a symbolic link
+
+     readv(2)
+           See read(2)
+
+     rename(2)
+           change the name of a file
+
+     resolvepath(2)
+           resolve all symbolic links of a path name
+
+     rmdir(2)
+           remove a directory
+
+     sbrk(2)
+           See brk(2)
+
+     semctl(2)
+           semaphore control operations
+
+     semget(2)
+           get set of semaphores
+
+     semop(2)
+           semaphore operations
+
+     setaudit(2)
+           See getaudit(2)
+
+     setaudit_addr(2)
+           See getaudit(2)
+
+     setauid(2)
+           See getauid(2)
+
+     setcontext(2)
+           See getcontext(2)
+
+     setegid(2)
+           See setuid(2)
+
+     seteuid(2)
+           See setuid(2)
+
+     setgid(2)
+           See setuid(2)
+
+     setgroups(2)
+           See getgroups(2)
+
+     setitimer(2)
+           See getitimer(2)
+
+     setpgid(2)
+           set process group ID
+
+     setpgrp(2)
+           set process group ID
+
+     setregid(2)
+           set real and effective group IDs
+
+     setreuid(2)
+           set real and effective user IDs
+
+     setrlimit(2)
+           See getrlimit(2)
+
+     setsid(2)
+           create session and set process group ID
+
+     setuid(2)
+           set user and group IDs
+
+     shmat(2)
+           See shmop(2)
+
+     shmctl(2)
+           shared memory control operations
+
+     shmdt(2)
+           See shmop(2)
+
+     shmget(2)
+           get shared memory segment identifier
+
+     shmop(2)
+           shared memory operations
+
+     sigaction(2)
+           detailed signal management
+
+     sigaltstack(2)
+           set or get signal alternate stack context
+
+     sigpending(2)
+           examine signals that are blocked and pending
+
+     sigprocmask(2)
+           change and/or examine caller's signal mask
+
+     sigsend(2)
+           send a signal to a process or a group of processes
+
+     sigsendset(2)
+           See sigsend(2)
+
+     sigsuspend(2)
+           install a signal mask and suspend caller until signal
+
+     sigwait(2)
+           wait until a signal is posted
+
+     stat(2)
+           get file status
+
+     statvfs(2)
+           get file system information
+
+     stime(2)
+           set system time and date
+
+     swapctl(2)
+           manage swap space
+
+     symlink(2)
+           make a symbolic link to a file
+
+     sync(2)
+           update super block
+
+     sysfs(2)
+           get file system type information
+
+     sysinfo(2)
+           get and set system information strings
+
+     time(2)
+           get time
+
+     times(2)
+           get process and child process times
+
+     uadmin(2)
+           administrative control
+
+     ulimit(2)
+           get and set process limits
+
+     umask(2)
+           set and get file creation mask
+
+     umount(2)
+           unmount a file system
+
+     umount2(2)
+           See umount(2)
+
+     uname(2)
+           get name of current operating system
+
+     unlink(2)
+           remove directory entry
+
+     ustat(2)
+           get file system statistics
+
+     utime(2)
+           set file access and modification times
+
+     utimes(2)
+           set file access and modification times
+
+     vfork(2)
+           spawn new process in a virtual memory efficient way
+
+     vhangup(2)
+           virtually hangup the current  controlling terminal
+
+     wait(2)
+           wait for child process to stop or terminate
+
+     waitid(2)
+           wait for child process to change state
+
+     waitpid(2)
+           wait for child process to change state
+
+     write(2)
+           write on a file
+
+     writev(2)
+           See write(2)
+
+     yield(2)
+           yield execution to another lightweight process
+
+     __sparc_utrap_install(2)
+           install a SPARC V9 user trap handler
+
+     _exit(2)
+           See exit(2)
+
+     _lwp_cond_broadcast(2)
+           See _lwp_cond_signal(2)
+
+     _lwp_cond_signal(2)
+           signal a condition variable
+
+     _lwp_cond_timedwait(2)
+           See _lwp_cond_wait(2)
+
+     _lwp_cond_wait(2)
+           wait on a condition variable
+
+     _lwp_continue(2)
+           See _lwp_suspend(2)
+
+     _lwp_create(2)
+           create a new light-weight process
+
+     _lwp_exit(2)
+           terminate the calling LWP
+
+     _lwp_getprivate(2)
+           See _lwp_setprivate(2)
+
+     _lwp_info(2)
+           return the time-accounting information of a single LWP
+
+     _lwp_kill(2)
+           send a signal to a LWP
+
+     _lwp_makecontext(2)
+           initialize an LWP context
+
+     _lwp_mutex_lock(2)
+           mutual exclusion
+
+     _lwp_mutex_trylock(2)
+           See _lwp_mutex_lock(2)
+
+     _lwp_mutex_unlock(2)
+           See _lwp_mutex_lock(2)
+
+     _lwp_self(2)
+           get LWP identifier
+
+     _lwp_sema_init(2)
+           See _lwp_sema_wait(2)
+
+     _lwp_sema_post(2)
+           See _lwp_sema_wait(2)
+
+     _lwp_sema_trywait(2)
+           See _lwp_sema_wait(2)
+
+     _lwp_sema_wait(2)
+           semaphore operations
+
+     _lwp_setprivate(2)
+           set or get LWP specific storage
+
+     _lwp_sigredirect(2)
+           See _signotifywait(2)
+
+     _lwp_suspend(2)
+           continue or suspend LWP execution
+
+     _lwp_wait(2)
+           wait for a LWP to terminate
+
+     _signotifywait(2)
+           deliver process signals to specific LWPs
+

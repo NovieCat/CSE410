@@ -1,0 +1,551 @@
+
+Built-in C shell commands (from the "man" entry for "csh")
+
+     alias [ name [ def ] ]
+           Assign def to the alias name. def is a list  of  words
+           that may contain escaped history-substitution metasyn-
+           tax. name is not allowed to be alias  or  unalias.  If
+           def  is  omitted, the current definition for the alias
+           name is displayed. If both name and def  are  omitted,
+           all aliases are displayed with their definitions.
+
+     bg [ %job ... ]
+           Run the current or specified jobs in the background.
+
+     break Resume execution after the end of the nearest  enclos-
+           ing  foreach or while loop.  The remaining commands on
+           the current line are executed. This allows  multilevel
+           breaks  to be written as a list of break commands, all
+           on one line.
+
+     breaksw
+           Break from a switch, resuming after the endsw.
+
+     case label:
+           A label in a switch statement.
+
+     cd [dir ]
+
+     chdir [dir ]
+           Change the shell's working directory to directory dir.
+           If  no argument is given, change to the home directory
+           of the user. If dir is a relative pathname  not  found
+           in the current directory, check for it in those direc-
+           tories listed in the cdpath variable. If  dir  is  the
+           name  of a shell variable whose value starts with a /,
+           change to the directory named by that value.
+
+     continue
+           Continue  execution  of  the  next  iteration  of  the
+           nearest enclosing while or foreach loop.
+
+     default:
+           Labels the default case in  a  switch  statement.  The
+           default  should  come  after  all  case  labels.   Any
+           remaining commands on the command line are first  exe-
+           cuted.
+
+     dirs [-l]
+           Print the directory stack, most recent  to  the  left;
+           the  first  directory  shown is the current directory.
+           With the -l argument, produce an  unabbreviated  prin-
+           tout; use of the ~ notation is suppressed.
+
+     echo [-n] list
+           The words in list are written to the shell's  standard
+           output,  separated  by space characters. The output is
+           terminated with a newline  unless  the  -n  option  is
+           used.  csh will, by default, invoke its built-in echo,
+           if echo is called without the full pathname of a  Unix
+           command,  regardless of the configuration of your PATH
+           (see echo(1)).
+
+     eval argument...
+           Reads the arguments as input to the shell and executes
+           the resulting command(s). This is usually used to exe-
+           cute commands generated as the result  of  command  or
+           variable  substitution. See tset(1B) for an example of
+           how to use eval.
+
+     exec command
+           Execute command in place of the current  shell,  which
+           terminates.
+
+     exit [(expr)]
+           The calling shell or shell script exits,  either  with
+           the  value  of  the  status variable or with the value
+           specified by the expression expr.
+
+     fg [%job ]
+           Bring the current or  specified  job  into  the  fore-
+           ground.
+
+     foreach var (wordlist)
+
+        ...
+
+     end   The variable var is successively set to each member of
+           wordlist.  The  sequence of commands between this com-
+           mand and the matching end is  executed  for  each  new
+
+           value  of  var. Both foreach and end must appear alone
+           on separate lines.
+
+           The built-in command continue may be used to terminate
+           the execution of the current iteration of the loop and
+           the built-in command break may be  used  to  terminate
+           execution of the foreach command. When this command is
+           read from the terminal, the loop is read once  prompt-
+           ing  with ? before any statements in the loop are exe-
+           cuted.
+
+     glob wordlist
+           Perform filename expansion on wordlist. Like echo, but
+           no  \  escapes  are recognized. Words are delimited by
+           NULL characters in the output.
+
+     goto label
+           The specified  label  is  a  filename  and  a  command
+           expanded  to  yield  a  label.   The shell rewinds its
+           input as much as possible and searches for a  line  of
+           the  form  label:  possibly  preceded  by space or tab
+           characters. Execution continues  after  the  indicated
+           line.  It  is  an error to jump to a label that occurs
+           between a  while  or  for  built-in  command  and  its
+           corresponding end.
+
+     hashstat
+           Print a statistics line indicating how  effective  the
+           internal  hash table for the path variable has been at
+           locating commands (and avoiding  execs).  An  exec  is
+           attempted  for  each  component  of the path where the
+           hash function indicates a possible  hit  and  in  each
+           component  that  does  not  begin  with  a  `/'. These
+           statistics only reflect the effectiveness of the  path
+           variable, not the cdpath variable.
+
+     history [-hr] [ n ]
+           Display the history list; if n is given, display  only
+           the n most recent events.
+
+           -r    Reverse the order of printout to be most  recent
+                 first rather than oldest first.
+
+           -h    Display  the  history   list   without   leading
+                 numbers.  This is used to produce files suitable
+                 for sourcing using the -h option to source.
+
+     if (expr )command
+           If the specified expression  evaluates  to  true,  the
+           single  command  with  arguments is executed. Variable
+           substitution on command happens  early,  at  the  same
+           time  it  does for the rest of the if command. command
+           must be a simple command, not a  pipeline,  a  command
+           list,  or  a  parenthesized  command  list. Note:  I/O
+           redirection occurs even if expr is false, when command
+           is not executed (this is a bug).
+
+     if (expr) then
+
+     ...
+
+     else if (expr2) then
+
+     ...
+
+     else
+
+     ...
+
+     endif If expr is true, commands up to  the  first  else  are
+           executed.  Otherwise,  if  expr2 is true, the commands
+           between the else if and the second else are  executed.
+           Otherwise, commands between the else and the endif are
+           executed.  Any number of else if  pairs  are  allowed,
+           but only one else. Only one endif is needed, but it is
+           required. The words else and endif must be  the  first
+           nonwhite  characters  on  a  line.  The if must appear
+           alone on its input line or after an else.
+
+     jobs [-l]
+           List the active jobs under job control.
+
+           -l    List process IDs,  in  addition  to  the  normal
+                 information.
+
+     kill [ -sig ] [ pid ] [ %job ] ...
+
+     kill -l
+           Send the TERM (terminate) signal, by default,  or  the
+           signal specified, to the specified process ID, the job
+           indicated, or the  current  job.  Signals  are  either
+           given  by number or by name. There is no default. Typ-
+           ing kill does not send a signal to the current job. If
+           the  signal  being  sent  is  TERM  (terminate) or HUP
+           (hangup), then the job or process is sent a CONT (con-
+           tinue) signal as well.
+
+           -l    List the signal names that can be sent.
+
+     limit [-h] [resource [max-use ] ]
+           Limit the consumption by the current  process  or  any
+           process  it  spawns, each not to exceed max-use on the
+           specified resource. If max-use is omitted,  print  the
+           current  limit;  if  resource  is omitted, display all
+           limits. (Run the sysdef(1M) command to obtain the max-
+           imum  possible  limits  for  your  system.  The values
+           reported are in hexadecimal,  but  can  be  translated
+           into decimal numbers using the bc(1) command).
+
+     -h    Use hard limits instead of the  current  limits.  Hard
+           limits  impose  a ceiling on the values of the current
+           limits. Only the privileged user may  raise  the  hard
+           limits.
+
+     resource is one of:
+
+     cputime
+           Maximum CPU seconds per process.
+
+     filesize
+           Largest single file allowed; limited to  the  size  of
+           the filesystem. (see df(1M)).
+
+     datasize (heapsize)
+           Maximum data size (including stack) for  the  process.
+           This is the size of your virtual memory See swap(1M).
+
+     stacksize
+           Maximum stack size for the process. See swap(1M).
+
+     coredumpsize
+           Maximum size of a core dump (file).  This  limited  to
+           the size of the filesystem.
+
+     descriptors
+           Maximum number of file descriptors. Run sysdef().
+
+     memorysize
+           Maximum size of virtual memory.
+
+     max-use is a number, with an  optional  scaling  factor,  as
+     follows:
+
+     nh    Hours (for cputime).
+
+     nk    n kilobytes. This is the default for all but cputime.
+
+     nm    n megabytes or minutes (for cputime).
+
+     mm:ss Minutes and seconds (for cputime).
+
+     Example of limit:  to limit the size of a core file dump  to
+     0 Megabytes, type the following:
+
+          limit coredumpsize 0M
+
+     login [username| -p ]
+           Terminate a  login  shell  and  invoke  login(1).  The
+           .logout file is not processed. If username is omitted,
+           login prompts for the name of a user.
+
+           -p    Preserve the current environment (variables).
+
+     logout
+           Terminate a login shell.
+
+     nice [+n |-n ] [command ]
+           Increment the process priority value for the shell  or
+           for  command  by n. The higher the priority value, the
+           lower the priority of a process,  and  the  slower  it
+           runs. When given, command is always run in a subshell,
+           and the restrictions placed on commands in  simple  if
+           commands apply. If command is omitted, nice increments
+           the value for the current shell. If  no  increment  is
+           specified,  nice sets the process priority value to 4.
+           The range of process priority values is  from  -20  to
+           20.  Values  of  n outside this range set the value to
+           the lower, or to the higher boundary, respectively.
+
+           +n    Increment the process priority value by n.
+
+           -n    Decrement by n. This argument can be  used  only
+                 by the privileged user.
+
+     nohup [command ]
+           Run command with  HUPs  ignored.  With  no  arguments,
+           ignore HUPs throughout the remainder of a script. When
+           given, command is always run in a  subshell,  and  the
+           restrictions  placed  on  commands in simple if state-
+           ments apply. All processes detached with & are  effec-
+           tively nohup'd.
+
+     notify [%job] ...
+           Notify the user asynchronously when the status of  the
+           current job or specified jobs changes.
+
+     onintr [-| label]
+           Control the action of the shell on interrupts. With no
+           arguments,  onintr  restores the default action of the
+           shell  on  interrupts.  (The  shell  terminates  shell
+
+           scripts  and  returns  to  the  terminal command input
+           level). With the - argument,  the  shell  ignores  all
+           interrupts.  With a label argument, the shell executes
+           a goto label when an interrupt is received or a  child
+           process terminates because it was interrupted.
+
+     popd [+n ]
+           Pop the directory stack and cd to the new  top  direc-
+           tory. The elements of the directory stack are numbered
+           from 0 starting at the top.
+
+           +n    Discard the n'th entry in the stack.
+
+     pushd [+n |dir]
+           Push a directory onto the  directory  stack.  With  no
+           arguments, exchange the top two elements.
+
+           +n    Rotate the n'th entry to the top  of  the  stack
+                 and cd to it.
+
+           dir   Push the  current  working  directory  onto  the
+                 stack and change to dir.
+
+     rehash
+           Recompute the internal hash table of the  contents  of
+           directories listed in the path variable to account for
+           new commands added. Recompute the internal hash  table
+           of  the  contents  of directories listed in the cdpath
+           variable to account for new directories added.
+
+     repeat count command
+           Repeat command count times. command is subject to  the
+           same restrictions as with the one-line if statement.
+
+     set [var [= value ] ]
+
+     set var[n] = word
+           With no arguments, set  displays  the  values  of  all
+           shell  variables.  Multiword values are displayed as a
+           parenthesized list. With the var argument  alone,  set
+           assigns  an  empty  (null)  value to the variable var.
+           With arguments of the form var  =  value  set  assigns
+           value to var, where value is one of:
+
+           word  A single word (or quoted string).
+
+           (wordlist)
+                 A space-separated  list  of  words  enclosed  in
+                 parentheses.
+
+           Values are command and filename expanded before  being
+           assigned. The form set var[n] = word replaces the n'th
+           word in a multiword value with word.
+
+     setenv [VAR  [word ] ]
+           With no arguments,  setenv  displays  all  environment
+           variables.  With  the  VAR   argument, setenv sets the
+           environment variable VAR   to  have  an  empty  (null)
+           value.  (By convention, environment variables are nor-
+           mally given upper-case names.) With both VAR  and word
+           arguments,  setenv  sets the environment variable NAME
+           to the value word, which must be either a single  word
+           or a quoted string. The most commonly used environment
+           variables, USER, TERM,  and  PATH,  are  automatically
+           imported  to and exported from the csh variables user,
+           term, and path; there is no need  to  use  setenv  for
+           these. In addition, the shell sets the PWD environment
+           variable from the csh variable cwd whenever the latter
+           changes.
+
+           The  environment  variables   LC_CTYPE,   LC_MESSAGES,
+           LC_TIME,  LC_COLLATE, LC_NUMERIC, and LC_MONETARY take
+           immediate effect when changed within the C shell.
+
+           If any of the LC_* variables  (LC_CTYPE,  LC_MESSAGES,
+           LC_TIME,  LC_COLLATE,  LC_NUMERIC,   and  LC_MONETARY)
+           (see environ(5)) are not set in the  environment,  the
+           operational  behavior  of  csh  for each corresponding
+           locale category is determined by the value of the LANG
+           environment  variable.  If LC_ALL is set, its contents
+           are used to override both the LANG and the other  LC_*
+           variables.   If  none of the above variables is set in
+           the environment, the "C"  (U.S. style)  locale  deter-
+           mines how csh behaves.
+
+           LC_CTYPE
+                 Determines  how  csh  handles  characters.  When
+                 LC_CTYPE  is  set  to  a  valid  value,  csh can
+                 display and handle text and filenames containing
+                 valid characters for that locale.
+
+           LC_MESSAGES
+                 Determines how diagnostic and  informative  mes-
+                 sages  are presented. This includes the language
+                 and style of the messages and the  correct  form
+                 of  affirmative  and negative responses.  In the
+                 "C" locale, the messages are  presented  in  the
+                 default  form  found  in  the program itself (in
+                 most cases, U.S./English).
+
+           LC_NUMERIC
+                 Determines the  value  of  the  radix  character
+                 (decimal  point  (".")  in  the  "C" locale) and
+                 thousand separator (empty string ("") in the "C"
+                 locale).
+
+     shift [variable ]
+           The components of argv, or variable, if supplied,  are
+           shifted  to  the left, discarding the first component.
+           It is an error for the variable not to be  set  or  to
+           have a null value.
+
+     source [-h] name
+           Reads commands  from  name.  source  commands  may  be
+           nested,  but  if  they are nested too deeply the shell
+           may run out of file descriptors. An error in a sourced
+           file  at  any  level terminates all nested source com-
+           mands.
+
+           -h    Place commands from the file name on the history
+                 list without executing them.
+
+     stop %jobid ...
+           Stop the current or specified background job.
+
+     stop pid ...
+           Stop the specified process, pid. (see ps(1)).
+
+     suspend
+           Stop the shell in its tracks, much as if it  had  been
+           sent a stop signal with ^Z. This is most often used to
+           stop shells started by su.
+
+     switch (string)
+
+     case label:
+
+     ...
+
+     breaksw
+
+     ...
+
+     default:
+
+     ...
+
+     breaksw
+
+     endsw
+
+           Each label is successively matched, against the speci-
+           fied  string,  which  is  first  command  and filename
+           expanded. The file metacharacters *, ? and  [...]  may
+           be  used  in  the  case  labels,  which  are  variable
+           expanded.  If  none  of  the  labels  match  before  a
+           "default"  label  is found, execution begins after the
+           default label. Each case  statement  and  the  default
+           statement  must appear at the beginning of a line. The
+           command breaksw continues execution after  the  endsw.
+           Otherwise  control  falls  through subsequent case and
+           default statements as with C. If no label matches  and
+           there  is  no  default,  execution continues after the
+           endsw.
+
+     time [command ]
+           With no argument, print a summary of time used by this
+           C  shell  and  its children. With an optional command,
+           execute command and print a summary  of  the  time  it
+           uses.  As  of  this writing, the time built-in command
+           does NOT compute the last 6 fields of output,  render-
+           ing the output to erroneously report the value "0" for
+           these fields.
+
+                   example %time ls -R
+                   9.0u 11.0s 3:32 10% 0+0k 0+0io 0pf+0w
+
+           (See below the "Environment Variables  and  Predefined
+           Shell Variables" sub-section on the time variable.)
+
+     umask [value ]
+           Display the file creation mask. With  value,  set  the
+           file  creation  mask.   With value given in octal, the
+           user can turn-off any bits, but cannot turn-on bits to
+           allow new permissions. Common values include 077, res-
+           tricting all permissions from everyone else; 002, giv-
+           ing complete access to the group, and read (and direc-
+           tory search) access to others;  or  022,  giving  read
+           (and directory search) but not write permission to the
+           group and others.
+
+     unalias pattern
+           Discard aliases  that  match  (filename  substitution)
+           pattern. All aliases are removed by `unalias *'.
+
+     unhash
+           Disable the internal hash  tables  for  the  path  and
+           cdpath variables.
+
+     unlimit [-h] [resource ]
+           Remove a limitation on resource.  If  no  resource  is
+           specified,  then all resource limitations are removed.
+           See the description of the limit command for the  list
+           of resource names.
+
+           -h    Remove  corresponding  hard  limits.  Only   the
+                 privileged user may do this.
+
+     unset pattern
+           Remove variables whose names match (filename substitu-
+           tion) pattern. All variables are removed by `unset *';
+           this has noticeably distasteful side effects.
+
+     unsetenv variable
+           Remove variable from the environment. As  with  unset,
+           pattern matching is not performed.
+
+     wait  Wait for background jobs to finish (or for  an  inter-
+           rupt) before prompting.
+
+     while (expr)
+
+     ...
+
+     end   While expr is true (evaluates to nonzero), repeat com-
+           mands  between  the  while and the matching end state-
+           ment. break and continue may be used to  terminate  or
+           continue  the loop prematurely. The while and end must
+           appear alone on their  input  lines.  If  the  shell's
+           input  is  a  terminal, it prompts for commands with a
+           question-mark until the end  command  is  entered  and
+           then performs the commands in the loop.
+
+     % [job ] [&]
+           Bring the current or indicated job to the  foreground.
+           With  the ampersand, continue running job in the back-
+           ground.
+
+     @ [var =expr]
+
+     @ [var[n]=expr]
+           With no arguments, display the values  for  all  shell
+           variables.  With  arguments,  set the variable var, or
+           the n'th word in the value of var, to the  value  that
+           expr  evaluates  to. (If [n] is supplied, both var and
+           its n'th component must already exist.)
+
+           If the expression contains the characters >, <, &,  or
+           |,  then  at  least  this  part of expr must be placed
+           within parentheses.
+
+           The operators *=, +=, and so forth, are  available  as
+           in  C.  The space separating the name from the assign-
+           ment  operator  is  optional.  Spaces  are,   however,
+           mandatory  in separating components of expr that would
+           otherwise be single words.
+
+           Special postfix operators, ++  and  --,  increment  or
+           decrement name, respectively.
+

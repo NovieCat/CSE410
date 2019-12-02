@@ -1,0 +1,16 @@
+#!/bin/csh -f
+#
+# Execute this script several times (as follows):
+#
+#   lab02.script1 aaa bbb ccc
+#   lab02.script1 aaa
+#   lab02.script1
+#
+
+echo $0
+echo $#argv
+echo $*
+echo $argv[*]
+echo $2
+echo $argv[2]
+
